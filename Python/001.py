@@ -45,4 +45,21 @@ sys.exit()
 # 2
 # 3
 
+# while
+# >>> i = 0
+# >>> while i < 3:
+# ...     i = i + 1
+# ...     print(i)
+# ...
+# 1
+# 2
+# 3
+
+# function
+# >>> def sum(a,b):
+# ...     return a+b
+# ...
+# >>> print(sum(3,4))
+# 7
+
 
