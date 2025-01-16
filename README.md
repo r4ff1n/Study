@@ -1,1 +1,1 @@
-공부방입니다.
+REPO for Study myself
