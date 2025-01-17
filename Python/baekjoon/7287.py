@@ -2,3 +2,5 @@
 # 이 문제는 입력이 없다.
 # 첫 줄에 자신이 맞은 문제의 수, 둘째 줄에 아이디를 출력한다.
 
+from bs4 import BeautifulSoup
+import requests
