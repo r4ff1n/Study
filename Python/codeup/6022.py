@@ -1,0 +1,1 @@
+a=input();[print(a[2*i:2+2*i],end=" ") for i in range(3)]

@@ -1,0 +1,1 @@
+a=float(input());[print(a) for _ in range(3)]
