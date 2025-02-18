@@ -4,7 +4,7 @@
 // gcc -o bof1 bof1.c -fno-stack-protector -no-pie
 void box()
 {
-    system("bin/sh");
+    system("/bin/sh");
 }
 int main(void)
 {
