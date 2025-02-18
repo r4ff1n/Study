@@ -5,7 +5,7 @@
 int len = 0;
 int main(void)
 {
-	char buf[8];
+	char buf[8];//sfp 8
 	memset(buf, "\x00", sizeof(buf));
 
 	while (1)

