@@ -1,1 +1,1 @@
-REPO for Study myself
+REPO for Studying myself
